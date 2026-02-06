@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEGEM Learning - Kenyan Digital Learning Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-title">
+                <h1>WEGEM <span>Learning</span></h1>
+                <p>Kenya's Premier Digital Learning Platform</p>
+            </div>
+            <div class="loading-images" id="subject-slideshow">
+                <!-- Images will be dynamically added -->
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p>Loading your learning experience...</p>
+            </div>
+        </div>
+        <div class="watermark">WEGEM Learning</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="logo">
+                    <h1><i class="fas fa-graduation-cap"></i> WEGEM <span>Learning</span></h1>
+                </div>
+                <nav class="main-nav">
+                    <button class="nav-btn" id="subject-btn"><i class="fas fa-book"></i> Subjects</button>
+                    <button class="nav-btn" id="grade-btn"><i class="fas fa-chalkboard-teacher"></i> Form/Grade</button>
+                    <button class="nav-btn" id="home-btn"><i class="fas fa-home"></i> Home</button>
+                </nav>
+                <div class="user-section">
+                    <span id="user-name">Guest</span>
+                    <button class="btn-logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Registration Modal -->
+        <div id="registration-modal" class="modal">
+            <div class="modal-content">
+                <h2>Choose Your Curriculum</h2>
+                <div class="curriculum-options">
+                    <div class="curriculum-card" id="curriculum-844" data-curriculum="8-4-4">
+                        <div class="card-header" style="background: linear-gradient(135deg, #1E40AF, #DB2777, #A78BFA);">
+                            <h3>8-4-4 Curriculum</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><i class="fas fa-check-circle"></i> Traditional Kenyan System</p>
+                            <p><i class="fas fa-check-circle"></i> Forms 1-4</p>
+                            <p><i class="fas fa-check-circle"></i> KCSE Preparation</p>
+                        </div>
+                        <button class="btn-select">Select 8-4-4</button>
+                    </div>
+                    
+                    <div class="curriculum-card" id="curriculum-cbc" data-curriculum="CBC">
+                        <div class="card-header" style="background: linear-gradient(135deg, #3730A3, #FBBF24, #10B981, #EF4444);">
+                            <h3>CBC Curriculum</h3>
+                        </div>
+                        <div class="card-body">
+                            <p><i class="fas fa-check-circle"></i> Competency Based</p>
+                            <p><i class="fas fa-check-circle"></i> Grades 1-12</p>
+                            <p><i class="fas fa-check-circle"></i> Skill Development Focus</p>
+                        </div>
+                        <button class="btn-select">Select CBC</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8-4-4 Registration Form -->
+        <div id="form-844" class="registration-form hidden">
+            <div class="form-container" style="border-left: 5px solid #1E40AF;">
+                <h2><i class="fas fa-user-graduate"></i> 8-4-4 Registration</h2>
+                <form id="registerForm844">
+                    <div class="form-group">
+                        <input type="text" id="name844" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-row">
+                        <select id="form844" required>
+                            <option value="">Select Form</option>
+                            <option value="Form 1">Form 1</option>
+                            <option value="Form 2">Form 2</option>
+                            <option value="Form 3">Form 3</option>
+                            <option value="Form 4">Form 4</option>
+                        </select>
+                        <input type="text" id="class844" placeholder="Class" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="stream844" placeholder="Stream (e.g., North, South)">
+                        <input type="text" id="school844" placeholder="School Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="adm844" placeholder="Admission Number" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Complete Registration</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CBC Registration Form -->
+        <div id="form-cbc" class="registration-form hidden">
+            <div class="form-container" style="border-left: 5px solid #3730A3;">
+                <h2><i class="fas fa-user-graduate"></i> CBC Registration</h2>
+                <form id="registerFormCBC">
+                    <div class="form-group">
+                        <input type="text" id="nameCBC" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="schoolCBC" placeholder="School Name" required>
+                        <select id="gradeCBC" required>
+                            <option value="">Select Grade</option>
+                            <option value="Grade 1">Grade 1</option>
+                            <option value="Grade 2">Grade 2</option>
+                            <option value="Grade 3">Grade 3</option>
+                            <option value="Grade 4">Grade 4</option>
+                            <option value="Grade 5">Grade 5</option>
+                            <option value="Grade 6">Grade 6</option>
+                            <option value="Grade 7">Grade 7</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" id="streamCBC" placeholder="Stream (Optional)">
+                        <input type="text" id="admCBC" placeholder="Admission Number" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Complete Registration</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard hidden" id="dashboard">
+            <div class="welcome-banner">
+                <h2>Welcome, <span id="display-name">Student</span>!</h2>
+                <p>Your <span id="display-curriculum">8-4-4</span> Learning Journey Begins Here</p>
+            </div>
+
+            <div class="features-grid">
+                <!-- WeGEM AI -->
+                <div class="feature-card" id="ai-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>WeGEM AI</h3>
+                    <p>Ask questions on any topic. Powered by Grok AI</p>
+                    <button class="feature-btn" id="ai-btn">Start Chat</button>
+                </div>
+
+                <!-- Exams -->
+                <div class="feature-card" id="exams-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Exams Section</h3>
+                    <p>KCSE-style papers with daily updates</p>
+                    <button class="feature-btn" id="exams-btn">View Exams</button>
+                </div>
+
+                <!-- Quiz -->
+                <div class="feature-card" id="quiz-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Quiz Section</h3>
+                    <p>Test yourself with Quick Quiz or Normal Quiz</p>
+                    <button class="feature-btn" id="quiz-btn">Take Quiz</button>
+                </div>
+
+                <!-- Symposium -->
+                <div class="feature-card" id="symposium-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Symposium</h3>
+                    <p>Group competition with other schools</p>
+                    <button class="feature-btn" id="symposium-btn">Join Game</button>
+                </div>
+
+                <!-- Notepad -->
+                <div class="feature-card" id="notepad-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sticky-note"></i>
+                    </div>
+                    <h3>Digital Notepad</h3>
+                    <p>Take notes and save your learning</p>
+                    <button class="feature-btn" id="notepad-btn">Open Notepad</button>
+                </div>
+
+                <!-- Progress -->
+                <div class="feature-card" id="progress-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracker</h3>
+                    <p>View your learning statistics</p>
+                    <button class="feature-btn" id="progress-btn">View Progress</button>
+                </div>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="quick-access">
+                <h3><i class="fas fa-bolt"></i> Quick Access</h3>
+                <div class="quick-links">
+                    <button class="quick-link" id="quick-quiz-btn">
+                        <i class="fas fa-stopwatch"></i> Quick Quiz (30 Questions)
+                    </button>
+                    <button class="quick-link" id="recent-papers-btn">
+                        <i class="fas fa-newspaper"></i> Recent Exam Papers
+                    </button>
+                    <button class="quick-link" id="downloads-btn">
+                        <i class="fas fa-download"></i> Downloaded Content
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- WeGEM AI Interface -->
+        <div id="ai-interface" class="feature-interface hidden">
+            <div class="interface-header">
+                <h2><i class="fas fa-robot"></i> WeGEM AI</h2>
+                <p>Powered by Grok AI - Ask any question</p>
+                <button class="btn-back" id="ai-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="ai-container">
+                <div class="ai-chat" id="ai-chat">
+                    <div class="ai-message">
+                        <div class="message-content">
+                            <strong>WeGEM AI:</strong> Hello! I'm your learning assistant. Ask me anything about your subjects, homework, or concepts you're struggling with. I can also generate quiz questions for you!
+                        </div>
+                    </div>
+                </div>
+                <div class="ai-input">
+                    <textarea id="ai-input" placeholder="Type your question here... (e.g., 'Explain photosynthesis' or 'Generate 5 questions about algebra')"></textarea>
+                    <button id="ai-send-btn"><i class="fas fa-paper-plane"></i> Send</button>
+                </div>
+                <div class="ai-actions">
+                    <button class="ai-action-btn" id="generate-quiz-btn">
+                        <i class="fas fa-question"></i> Generate Quiz
+                    </button>
+                    <button class="ai-action-btn" id="explain-concept-btn">
+                        <i class="fas fa-lightbulb"></i> Explain Concept
+                    </button>
+                    <button class="ai-action-btn" id="past-paper-btn">
+                        <i class="fas fa-file-pdf"></i> Past Paper Help
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Interface -->
+        <div id="quiz-interface" class="feature-interface hidden">
+            <div class="interface-header">
+                <h2><i class="fas fa-question-circle"></i> Quiz Section</h2>
+                <button class="btn-back" id="quiz-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="quiz-options">
+                <div class="quiz-type" id="quick-quiz-option">
+                    <h3><i class="fas fa-bolt"></i> Quick Quiz</h3>
+                    <p>30 random questions from all topics</p>
+                    <p><i class="fas fa-clock"></i> 60 seconds per question</p>
+                    <button class="quiz-start-btn" id="start-quick-quiz">Start Quick Quiz</button>
+                </div>
+                <div class="quiz-type" id="normal-quiz-option">
+                    <h3><i class="fas fa-sliders-h"></i> Normal Quiz</h3>
+                    <p>Customize by Form/Grade, Subject, and Topic</p>
+                    <div class="quiz-selectors">
+                        <select id="quiz-form">
+                            <option value="">Select Form/Grade</option>
+                        </select>
+                        <select id="quiz-subject">
+                            <option value="">Select Subject</option>
+                        </select>
+                        <select id="quiz-topic">
+                            <option value="">Select Topic</option>
+                        </select>
+                    </div>
+                    <button class="quiz-start-btn" id="start-normal-quiz">Start Normal Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Taking Interface -->
+        <div id="quiz-taking" class="hidden">
+            <div class="quiz-header">
+                <div class="quiz-timer">
+                    <i class="fas fa-clock"></i> <span id="quiz-timer">60</span>s
+                </div>
+                <div class="quiz-progress">
+                    Question <span id="current-question">1</span> of <span id="total-questions">30</span>
+                </div>
+                <button class="btn-quit-quiz" id="quit-quiz-btn">Quit Quiz</button>
+            </div>
+            <div class="quiz-question-container">
+                <div class="quiz-question" id="quiz-question">
+                    <!-- Question will be loaded here -->
+                </div>
+                <div class="quiz-answer">
+                    <textarea id="quiz-answer-input" placeholder="Type your answer here... (Short text answers only)"></textarea>
+                    <button id="submit-answer-btn">Submit Answer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notepad Interface -->
+        <div id="notepad-interface" class="feature-interface hidden">
+            <div class="interface-header">
+                <h2><i class="fas fa-sticky-note"></i> Digital Notepad</h2>
+                <button class="btn-back" id="notepad-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="notepad-container">
+                <div class="notepad-tools">
+                    <button id="new-note-btn"><i class="fas fa-plus"></i> New Note</button>
+                    <button id="save-note-btn"><i class="fas fa-save"></i> Save Note</button>
+                    <button id="delete-note-btn"><i class="fas fa-trash"></i> Delete Note</button>
+                    <select id="note-subject">
+                        <option value="">All Subjects</option>
+                    </select>
+                </div>
+                <div class="notepad-content">
+                    <div class="notes-list" id="notes-list">
+                        <!-- Notes will appear here -->
+                    </div>
+                    <div class="note-editor">
+                        <input type="text" id="note-title" placeholder="Note Title">
+                        <textarea id="note-content" placeholder="Start typing your notes here..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exams Interface -->
+        <div id="exams-interface" class="feature-interface hidden">
+            <div class="interface-header">
+                <h2><i class="fas fa-file-alt"></i> Exams Section</h2>
+                <p>KCSE-style papers for Form 3 & 4</p>
+                <button class="btn-back" id="exams-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="exams-container">
+                <div class="exams-filter">
+                    <select id="exam-subject">
+                        <option value="">Select Subject</option>
+                    </select>
+                    <select id="exam-form">
+                        <option value="Form 3">Form 3</option>
+                        <option value="Form 4">Form 4</option>
+                    </select>
+                    <button id="search-exams-btn"><i class="fas fa-search"></i> Search Papers</button>
+                </div>
+                <div class="exams-grid" id="exams-grid">
+                    <!-- Exam papers will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Symposium Interface -->
+        <div id="symposium-interface" class="feature-interface hidden">
+            <div class="interface-header">
+                <h2><i class="fas fa-users"></i> Symposium - Group Competition</h2>
+                <button class="btn-back" id="symposium-back-btn"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+            <div class="symposium-container">
+                <div class="symposium-setup">
+                    <h3>Setup New Game</h3>
+                    <div class="setup-options">
+                        <input type="text" id="group1-name" placeholder="Group 1 Name" value="Group Alpha">
+                        <input type="text" id="group2-name" placeholder="Group 2 Name" value="Group Beta">
+                        <select id="symposium-subject">
+                            <option value="">Select Subject</option>
+                        </select>
+                        <input type="number" id="question-count" placeholder="Number of Questions" value="10" min="5" max="50">
+                    </div>
+                    <button id="start-symposium-btn" class="btn-symposium-start">
+                        <i class="fas fa-play"></i> Start Symposium
+                    </button>
+                </div>
+                <div class="symposium-game hidden" id="symposium-game">
+                    <div class="game-header">
+                        <div class="group-score" id="group1-score">
+                            <h4 id="group1-display">Group Alpha</h4>
+                            <div class="score">0</div>
+                        </div>
+                        <div class="game-timer">
+                            <i class="fas fa-clock"></i> <span id="symposium-timer">90</span>s
+                        </div>
+                        <div class="group-score" id="group2-score">
+                            <h4 id="group2-display">Group Beta</h4>
+                            <div class="score">0</div>
+                        </div>
+                    </div>
+                    <div class="game-question">
+                        <div class="question-number">Question <span id="game-question-num">1</span></div>
+                        <div class="question-text" id="game-question-text">
+                            <!-- Question appears here -->
+                        </div>
+                    </div>
+                    <div class="game-controls">
+                        <button class="game-btn pass-btn" id="pass-btn">
+                            <i class="fas fa-forward"></i> Pass
+                        </button>
+                        <button class="game-btn answer-btn" id="answer-btn">
+                            <i class="fas fa-check-circle"></i> Answer
+                        </button>
+                    </div>
+                    <div class="answer-section hidden" id="answer-section">
+                        <textarea id="symposium-answer" placeholder="Type your answer..."></textarea>
+                        <button id="submit-symposium-answer">Submit Answer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div id="notification" class="notification hidden">
+        <span id="notification-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
